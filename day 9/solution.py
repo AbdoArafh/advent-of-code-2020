@@ -11,7 +11,24 @@ def check(index):
                 return True
     return False
 
+value = int;
 data = list(map(int, data))
 for i, number in enumerate(data):
     if not check(i):
-        print(number)
+        value = number
+
+print(value)
+
+def weakness(length):
+    if length == 100:
+        return 0
+    for i in range(len(data) - length):
+        numbers = set()
+        for j in range(length):
+            numbers.add(data[i + j])
+        if sum(numbers) == value:
+            return numbers
+    return weakness(length + 1)
+
+values = weakness(2)
+print('min:' + str(min(values)), 'max:' + str(max(values)), 'answer:' + str(min(values) + max(values)))
