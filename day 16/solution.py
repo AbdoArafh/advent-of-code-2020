@@ -25,7 +25,7 @@ def bounded(field, rule):
 
 def checkValidity(tickets, rules):
     valid = set()
-    invalid = set()
+    invalid = list()
     for ticket in tickets:
         for field in ticket:
             count = 0
@@ -36,7 +36,7 @@ def checkValidity(tickets, rules):
                     else:
                         count += 1
             if count == (len(rules) * len(rule)):
-                invalid.add(field)
+                invalid.append(field)
     return sumSet(invalid)
 
 nearbyTickets = [x.split(',') for x in rawTickets][1:]
