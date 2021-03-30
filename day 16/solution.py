@@ -70,20 +70,15 @@ validTickets = difference(nearbyTickets, invalidTickets)
 
 def order(tickets, rules):
     order = []
-    for i in range(len(tickets[0])):
-        column = [x[i] for x in tickets]
-        count = [0] * len(rules)
-        for field in column:
-            for j, rule in enumerate(rules):
+    for ruleIndex, rule in enumerate(rules):
+        count = [0] * len(tickets[0])
+        for ticket in tickets:
+            for fieldIndex, field in enumerate(ticket):
                 if boundRule(field, rule):
-                    count[j] += 1
-        for c in range(len(rules)):
-            if count[c] == len(tickets):
-                order.append(c)
-                continue
+                    count[fieldIndex] += 1
+        order.append(count.index(max(count)))
     print(order)
-    # print(len(rules))
-    # print(rules)
-    # print(count)
+
+
 
 order(validTickets, lowsAndHighs)
