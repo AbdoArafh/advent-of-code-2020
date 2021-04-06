@@ -1,4 +1,5 @@
 import re
+from sys import exit
 
 with open('test.txt', 'r') as file:
     problems = file.read().strip().split("\n")[5]
@@ -29,7 +30,7 @@ def solve(problem):
                 group = problem[start+1:end-1]
             except AttributeError:
                 print(problem)
-                return problem
+                exit()
             # print(f"condition didn't matched in: {problem}")
         # print(group)
         # try:
@@ -45,12 +46,11 @@ def solve(problem):
         x = loc['x']
         return solve(str(x)+ problem[exep.end():])
         # except IndexError:
-            # return str(x)
+            # return str(x)  
     else:
         return problem
-        
-# print(sum[int(solve(problem)) for problem in problems])
-# print(sum([int(solve(x)) for x in problems]))
+
+
 print(solve(problems))
 # print(sum([int(solve(x).strip()) for x in problems]))
 # print([solve(x) for x in problems])
