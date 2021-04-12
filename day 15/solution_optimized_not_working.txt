@@ -1,0 +1,159 @@
+# def spoken(value, set):
+#     try:
+#         return [x for x in set if value == x[1]][0]
+#     except ValueError:
+#         return None
+
+# def speak(list, target=2020):
+#     spoken_nums = set()
+#     for i in range(len(list)):
+#         spoken_nums.add((i, list[i]))
+#     while len(list) != target:
+#         last_spoken = spoken(list[-1], spoken_nums)
+#         if last_spoken != None:
+#             print(list[-1], last_spoken)
+#             list.append(len(list) - 1 - last_spoken[0])
+#             spoken_nums.add((len(list)-1, list[-1]))
+#             spoken_nums.discard(last_spoken)
+#         else:
+#             list.append(0)
+#     return list
+
+# print("part1: " + str(speak([0,8,15,2,12,1,4])))
+
+
+
+# def spoken(list, item):
+#     try:
+#         return [x for x in list if x[1] == item][0]
+#     except ValueError:
+#         return None
+
+# def replace(first, second):
+    
+
+# def speak(list, target=2020):
+#     spoken_nums = []
+#     for i, item in enumerate(list[:-1]):
+#         spoken_nums.append((i, list[i]))
+#     spoken_nums.append((len(list), 0))
+#     list.append(0)
+#     while 
+
+
+# def was_spoken(list, item):
+#     return item in [x[1] for x in list]
+
+# def spoken(list, item):
+#     for i in list:
+#         if i[1] == item:
+#             return i
+
+# def hitTarget(list, target):
+#     return len(list) == target
+
+# def addInitialList(initialList, list):
+#     for i in range(len(initialList)):
+#         list.append((i, initialList[i]))
+#     return list
+
+# def replace(list, first, second):
+#     for i in range(len(list)):
+#         if list[i] == first:
+#             list[i] = second
+#             return list
+
+# def speak(list, target):
+#     spoken_nums = []
+#     spoken_nums = addInitialList(list, spoken_nums)
+#     list.append(0)
+#     while hitTarget(list, target):
+#         if was_spoken(spoken_nums, list[-1]):
+#             spoken_data = spoken(spoken_nums, list[-1])
+#             replace(spoken_nums, (spoken, list[-1]), spoken_data)
+#             list.append(len(list)-1-spoken_data[0])
+#         else:
+#             list.append(0)
+#             spoken_nums.append((len(list), 0))
+#     return spoken_nums
+
+# print(speak([0, 3, 6], 10))
+
+# def spoken(list, item):
+#     for i in range(len(list)-1, -1, -1):
+#         if list[i][1] == item:
+#             return list[i]
+
+# def speak(list, target):
+#     spoken_nums = []
+#     for i in range(len(list)):
+#         spoken_nums.append((i, list[i]))
+#     list.append(0)
+#     while len(list) < target:
+#         spoken_num = spoken(spoken_nums, list[-1])
+#         if spoken_num != None:
+#             spoken_nums.append((len(list)-1, list[-1]))
+#             list.append(len(list)-1-spoken_num[0])
+#         else:
+#             spoken_nums.append((len(list)-1, list[-1]))
+#             list.append(0)
+#     return list[-1]
+
+# print(speak([0,3,6], 10))
+# print(speak([0,8,15,2,12,1,4], 2020))
+
+
+# def spoken(spoken_numbers, value):
+#     try:
+#         print(value, spoken_numbers)
+#         return [x for x in spoken_numbers if x[1] == value][0]
+#     except:
+#         return None
+
+# def speak(list, target=2020):
+#     spoken_nums = set()
+#     for i, num in enumerate(list):
+#         spoken_nums.add((i, num))
+#     list.append(0)
+#     while len(list) != target:
+#         num = list[-1]
+#         last_spoken = spoken(spoken_nums, num)
+#         if last_spoken != None:
+#             list.append(len(list) - 1 - last_spoken[0])
+#             spoken_nums.remove(last_spoken)
+#             spoken_nums.add((len(list)-1, num))
+#         else:
+#             spoken_nums.add((len(list)-1, num))
+#             list.append(0)
+#     return list
+
+# print("part1: " + str(speak([0,3,6], 10)))
+
+spoken_numbers = [0,3,6]
+spoken_order = set()
+
+def find(num, set):
+    for x in set:
+        if x[0] == number:
+            return x
+    raise ValueError("value not found")
+
+while len(spoken_numbers) < 10:
+    length = len(spoken_numbers)
+    for i in range(length):
+        spoken_order.add((spoken_numbers[i], i))
+    spoken_numbers.append(0)
+    search_nums =  [x[0] for x in spoken_order]
+    search_place = [x[1] for x in spoken_order]
+    number = spoken_numbers[-1]
+    if number in search_nums:
+        spoken_numbers.append(length - 1 - search_place[search_nums.index(number)])
+        
+        spoken_order(find(number, spoken_numbers)) = (number, length-1)
+        print([x[1] for x in spoken_order if x[0] == number], number)
+    else:
+        spoken_numbers.append(0)
+        spoken_order.add((number, length-1))
+
+print(spoken_numbers)
+# print(spoken_order)

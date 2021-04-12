@@ -2,7 +2,7 @@ import re
 from sys import exit
 
 with open('test.txt', 'r') as file:
-    problems = file.read().strip().split("\n")[:4]
+    problems = file.read().strip().split("\n")[5]
 
 # results = []
 # for problem in problems:
@@ -16,7 +16,7 @@ def solve(problem):
     if '(' in problem:
         # exep = r'(\((\(.+\)*)+\))'
         # exep = r'\((.*\(.+\).*)+?\)'
-        exep = r'\((.*?\(.*?\).*?)+?\)'
+        exep = r'\((.*?\(.+?\).*?)+\)'
         if bool(re.search(exep, problem)):
             matchObject = re.search(exep, problem)
             start = matchObject.start()
@@ -28,6 +28,10 @@ def solve(problem):
                 start = re.search(r'\(', problem).start()
                 end = re.search(r'\)', problem).end()
                 group = problem[start+1:end-1]
+                # obj = re.search(r'(.*?\(.+\))', problem)
+                # start = obj.start()
+                # end = obj.end()
+                # group = obj.group()
             except AttributeError:
                 print(problem)
                 exit()
@@ -51,6 +55,6 @@ def solve(problem):
         return problem
 
 
-# print(solve(problems))
+print(solve(problems))
 # print(sum([int(solve(x).strip()) for x in problems]))
-print([solve(x) for x in problems])
+# print([solve(x) for x in problems])
